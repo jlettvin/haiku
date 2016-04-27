@@ -17,7 +17,8 @@
 
 <style type="text/css">
 
-/* tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt */
+/* tag controls tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt */
+/* tag names are all lowercase */
 body {
   background-color:yellow;
 }
@@ -25,34 +26,47 @@ table {
   border:1px solid black;
 }
 li {
-  margin:0;
-  padding:0;
   display:none;
 }
 
-/* iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii */
-.language{
+/* class controls cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc */
+/* class names are capitalized */
+.Language {
   color:white;
   background-color:black;
+  font-size:10pt;
   text-align:center;
 }
-.language:hover{
+.Language:hover {
   color:black;
   background-color:white;
   text-align:center;
 }
-.haiku {
-  text-align:center;
+.Haiku {
   visibility:hidden;
 }
 
-/* cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc */
-#display {
-  width:200px;
-  height:100px;
+/* id controls iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii */
+/* id names are all caps */
+#TITLE_DIV {
   text-align:center;
-  white-space:pre;
+}
+#TITLE_TXT {
+  font-size:15pt;
+}
+#LEGAL {
+  font-size:10pt;
+  text-align:center;
+}
+#HAIKU_BOX {
+  width:250pt;
   background-color:white;
+}
+#HAIKU_TXT {
+  height:70pt;  /* Determined by trial-and-error */
+  white-space:pre;
+  font-size:12pt;
+  text-align:center;
 }
 </style>
 
@@ -64,48 +78,48 @@ li {
     <nav>
       <ul>
 <li class="haiku" id="Afrikaans">
-Te oordeel sonde is sonde.<br />
-God oordeel ons gou genoeg nie.<br />
+Te oordeel sonde is sonde.
+God oordeel ons gou genoeg nie.
 Kom ons wees vriende tot dan.
 </li>
 <li class="haiku" id="Albanian">
-Duke gjykuar mëkatin është mëkat.<br />
-Perëndia na gjykon mjaft shpejt.<br />
+Duke gjykuar mëkatin është mëkat.
+Perëndia na gjykon mjaft shpejt.
 Le të jenë miqtë deri atëherë.
 </li>
 <li class="haiku" id="Amharic">
-ኃጢአት ላይ ከመፍረድ ኃጢአት ነው.<br />
-አምላክ በቅርቡ በቂ ይፈርዳል.<br />
+ኃጢአት ላይ ከመፍረድ ኃጢአት ነው.
+አምላክ በቅርቡ በቂ ይፈርዳል.
 የአምላክ በዚያን ጊዜ ድረስ ጓደኞች እንሁን.
 </li>
 <li class="haiku" id="Arabic">
-الحكم على الخطيئة هي الخطيئة.<br />
-الله يحكم لنا قريبا بما فيه الكفاية.<br />
+الحكم على الخطيئة هي الخطيئة.
+الله يحكم لنا قريبا بما فيه الكفاية.
 دعنا نكون أصدقاء حتى ذلك الحين.
 </li>
 <li class="haiku" id="Armenian">
-Դատելով մեղքը մեղք է:<br />
-Աստված դատում մեզ շուտով բավարար.<br />
+Դատելով մեղքը մեղք է:
+Աստված դատում մեզ շուտով բավարար.
 Եկեք լինի Ընկերներ մինչ այդ:
 </li>
 <li class="haiku" id="Azerbaijani">
-günah Münsiflər günahdır.<br />
-Allah bizə tezliklə kifayət qədər hökm.<br />
+günah Münsiflər günahdır.
+Allah bizə tezliklə kifayət qədər hökm.
 ardından qədər dost olsun.
 </li>
 <li class="haiku" id="Basque">
-sin ikusita sin da.<br />
-Jainkoak epaitu digu bezain azkar.<br />
+sin ikusita sin da.
+Jainkoak epaitu digu bezain azkar.
 Izan gaitezen lagun ordura arte.
 </li>
 <li class="haiku" id="Belarusian">
-Калі судзіць грэх з'яўляецца грахом.<br />
-Бог судзіць нас дастаткова хутка.<br />
+Калі судзіць грэх з'яўляецца грахом.
+Бог судзіць нас дастаткова хутка.
 Давайце будзем сябрамі, пакуль пазней.
 </li>
 <li class="haiku" id="Bengali">
-পাপ বিচার পাপ নেই.<br />
-ঈশ্বর আমাদের শীঘ্রই পর্যাপ্ত ফয়সালা করেন.<br />
+পাপ বিচার পাপ নেই.
+ঈশ্বর আমাদের শীঘ্রই পর্যাপ্ত ফয়সালা করেন.
 আমাদের তখন পর্যন্ত বন্ধুদের হউক.
 </li>
 <li class="haiku" id="Bosnian">
@@ -142,8 +156,8 @@ Oversættelse nødvendig.
 Vertaling nodig.
 </li>
 <li class="haiku" id="English">
-'Tis sin to judge sin.</br>
-God sorts us out soon enough.</br>
+'Tis sin to judge sin.
+God sorts us out soon enough.
 Let's be friends 'til then.
 </li>
 <li class="haiku" id="Esperanto">
@@ -382,8 +396,8 @@ angen cyfieithiad.
 Translation ezifunekayo.
 </li>
 <li class="haiku" id="Yiddish">
-דזשאַדזשינג זינד איז זינד.</br>
-גאָט סאָרץ אונדז אויס באַלד גענוג.</br>
+דזשאַדזשינג זינד איז זינד.
+גאָט סאָרץ אונדז אויס באַלד גענוג.
 זאל ס זיין Friends ביז דעמאָלט.</li>
 <li class="haiku" id="Yoruba">
 Translation ti nilo.
@@ -399,12 +413,14 @@ Labahumushi lalidinga abantu.
     <article>
 
       <header>
-        <div align="center">Haiku (jlettvin@gmail.com)</div> <!-- title -->
+        <div id="TITLE_DIV">
+          <b id="TITLE_TXT">Haiku (jlettvin@gmail.com)<b> <!-- Title appears here -->
+        </div>
       </header>
 
       <div align="center">
-        <table width="400px"><tr align="center">
-            <td id="display"></td> <!-- Translation text appears here -->
+        <table id="HAIKU_BOX" width="250pt"><tr align="center">
+            <td id="HAIKU_TXT"></td> <!-- Translation text appears here -->
         </tr></table>
       </div>
     </article>
@@ -412,55 +428,60 @@ Labahumushi lalidinga abantu.
 
   <section>
     <article>
-      <div class="menu"></div> <!-- MENU appears here -->
+      <div class="MENU"></div> <!-- MENU appears here -->
     </article>
   </section>
 
   <footer>
-    <div align="center">
+    <div id="LEGAL">
       Copyright&copy; 2016 Jonathan D. Lettvin, All Rights Reserved
     </div>
   </footer>
 
   <script> /* ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss */
-(function() {
+//(function() {
+document.haiku = {speaking:'English'};
 function display(language) {
   // This function copies a hidden haiku to the display table cell.
   var source = document.getElementById(language);
-  var target = document.getElementById('display');
+  var target = document.getElementById('HAIKU_TXT');
   target.innerHTML = source.innerHTML.trim() || "Translation needed.";
 }
 
 // These functions handle mouse hover display changes.  CSS handles bgcolor.
-function enter(language) { display(language); }
-function leave(language) { display('English'); }
+function mouseEnter(language) {                  display(language); }
+function mouseLeave(language) {   display(document.haiku.speaking); }
+function mouseClick(language) { document.haiku.speaking = language; }
 
-var haiku = $('.haiku');
-var languages = haiku.length;
-//var edge  = Math.ceil(Math.sqrt(languages));
-var edge = 6;
+var haiku = $('.haiku');        // Fetch list of all hidden text
+var languages = haiku.length;   // Count the languages
+var width = 6;                  // Specify horizontal language count
 
+// Generate the menu on-the-fly from language names (id value of haiku)
 var table = '<table align="center">';
-for (var row of _.range(0, languages, edge)) {
-  var R = +row;
+for (var row of _.range(0, languages, width)) {
+  // Make a new table row
   table += '<tr>';
-  for (var col of _.range(edge)) {
-    var C = +col;
-    var I = R + C;
+  for (var col of _.range(width)) {
+    var I = row + col;
     var language = I;
-    if (language >= languages) break;
+    if (language >= languages) break;  // Quit if no more languages.
     var element = haiku[language];
     var id = element.id;
-    var onEnter = ' onmouseenter="enter(\'' + id + '\')"';
-    var onLeave = ' onmouseleave="leave(\'' + id + '\')"';
-    table += '<td class="language" ' + onEnter + onLeave + '>' + id + '</td>';
+    var onEnter = ' onmouseenter="mouseEnter(\'' + id + '\')"';
+    var onLeave = ' onmouseleave="mouseLeave(\'' + id + '\')"';
+    var onClick =      ' onclick="mouseClick(\'' + id + '\')"';
+    var onMouse = onEnter + onLeave + onClick;
+    table += '<td class="Language" ' + onMouse + '>' + id + '</td>';
   }
   table += '</tr>';
 }
 table += '</table>';
-$('.menu').html(table);
-display('English');
-})();
+
+$('.MENU').html(table);         // Fill the menu with the generated table
+
+display(document.haiku.speaking); // Initialize display for default language.
+//})();
   </script> <!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
 
 </body> <!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
