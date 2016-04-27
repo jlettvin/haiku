@@ -412,7 +412,7 @@ Labahumushi lalidinga abantu.
 
   <section>
     <article>
-      <div class="choose"></div> <!-- MENU appears here -->
+      <div class="menu"></div> <!-- MENU appears here -->
     </article>
   </section>
 
@@ -423,16 +423,17 @@ Labahumushi lalidinga abantu.
   </footer>
 
   <script> /* ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss */
-function show(language, bgcolor='#fff') {
+(function() {
+function display(language) {
+  // This function copies a hidden haiku to the display table cell.
   var source = document.getElementById(language);
   var target = document.getElementById('display');
-  var text = source.innerHTML.trim();
-  if (text == '') text = "Translation needed.";
-  target.innerHTML = text;
+  target.innerHTML = source.innerHTML.trim() || "Translation needed.";
 }
 
-function enter(language) { show(language); }
-function leave(language) { show('English'); }
+// These functions handle mouse hover display changes.  CSS handles bgcolor.
+function enter(language) { display(language); }
+function leave(language) { display('English'); }
 
 var haiku = $('.haiku');
 var languages = haiku.length;
@@ -457,8 +458,9 @@ for (var row of _.range(0, languages, edge)) {
   table += '</tr>';
 }
 table += '</table>';
-$('.choose').html(table);
-show('English');
+$('.menu').html(table);
+display('English');
+})();
   </script> <!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
 
 </body> <!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
