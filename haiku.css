@@ -1,0 +1,55 @@
+/* tag controls tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt */
+/* tag names are all lowercase */
+body {
+  background-color:yellow;
+}
+table {
+  border:1px solid black;
+}
+li {
+  display:none;
+}
+
+/* class controls cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc */
+/* class names are capitalized */
+.Language {
+  color:white;
+  background-color:black;
+  font-size:10pt;
+  text-align:center;
+}
+.Language:hover {
+  color:black;
+  background-color:white;
+  text-align:center;
+}
+.Haiku {
+  visibility:hidden;
+}
+
+/* id controls iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii */
+/* id names are all caps */
+#TITLE_DIV {
+  text-align:center;
+}
+#TITLE_TXT {
+  font-size:15pt;
+}
+#LEGAL {
+  font-size:10pt;
+  text-align:center;
+}
+#HAIKU_DIV {
+  /* text-align:center; */
+}
+#HAIKU_BOX {
+  width:250pt;
+  background-color:white;
+  text-align:center;
+}
+#HAIKU_TXT {
+  height:70pt;  /* Determined by trial-and-error */
+  white-space:pre;
+  font-size:12pt;
+  text-align:center;
+}
