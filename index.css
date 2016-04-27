@@ -56,4 +56,6 @@ li {
 #DIRECTIONS {
   font-size:8pt;
   font-style:italic;
+  line-height:100%;
+  margin:2px;
 }
