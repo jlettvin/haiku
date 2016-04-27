@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
 
-<!-- HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH -->
-<head>
+<html>
+<head> <!-- HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH -->
 
 <meta charset="UTF-8">
 <title>Haiku (jlettvin@gmail.com)</title>
 
+<!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
 <script type="text/javascript" language="Javascript" src=
 "https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
 </script>
@@ -16,19 +16,11 @@
 </script>
 
 <style type="text/css">
+
+/* tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt */
 body {
   background-color:yellow;
-  text-align:center;
 }
-header {
-  text-align:center;
-  font-size:20pt;
-}
-footer {
-  text-align:center;
-  font-size:8pt;
-}
-
 table {
   border:1px solid black;
 }
@@ -37,6 +29,8 @@ li {
   padding:0;
   display:none;
 }
+
+/* iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii */
 .language{
   color:white;
   background-color:black;
@@ -51,6 +45,8 @@ li {
   text-align:center;
   visibility:hidden;
 }
+
+/* cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc */
 #display {
   width:200px;
   height:100px;
@@ -60,10 +56,9 @@ li {
 }
 </style>
 
-</head>
-<!-- HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH -->
-<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
-<body>
+</head> <!-- HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH -->
+
+<body> <!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
 
   <header>
     <nav>
@@ -404,30 +399,30 @@ Labahumushi lalidinga abantu.
     <article>
 
       <header>
-        Haiku (jlettvin@gmail.com)
+        <div align="center">Haiku (jlettvin@gmail.com)</div> <!-- title -->
       </header>
 
       <div align="center">
-        <table width="400px"><tr align="center"><td id="display">
-        </td></tr></table>
+        <table width="400px"><tr align="center">
+            <td id="display"></td> <!-- Translation text appears here -->
+        </tr></table>
       </div>
     </article>
   </section>
 
-
   <section>
     <article>
-      <div class="choose">
-      </div>
+      <div class="choose"></div> <!-- MENU appears here -->
     </article>
   </section>
 
   <footer>
-    Copyright&copy; 2016 Jonathan D. Lettvin, All Rights Reserved
+    <div align="center">
+      Copyright&copy; 2016 Jonathan D. Lettvin, All Rights Reserved
+    </div>
   </footer>
 
-<!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
-<script>
+  <script> /* ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss */
 function show(language, bgcolor='#fff') {
   var source = document.getElementById(language);
   var target = document.getElementById('display');
@@ -464,10 +459,8 @@ for (var row of _.range(0, languages, edge)) {
 table += '</table>';
 $('.choose').html(table);
 show('English');
-</script>
-<!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
+  </script> <!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
 
-</body>
-<!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
+</body> <!-- BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -->
 
 </html>
