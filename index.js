@@ -354,7 +354,7 @@ Labahumushi lalidinga abantu.
           ': ' +
           browser_inform +
           '</small>');
-  if (!browser_accept) return;
+  if (browser_accept) {
 //_____________________________________________________________________________
 
 var width = 6;                  // Specify horizontal language count
@@ -423,5 +423,6 @@ var width = 6;                  // Specify horizontal language count
 
   fillTable();
   display(document.haiku.speaking); // Initialize display for default language.
+  }
 //});
 //})();
