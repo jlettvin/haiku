@@ -9,6 +9,10 @@ table {
 li {
   display:none;
 }
+h6 {
+  margin-top:0px;
+  margin-bottom:0px;
+}
 
 /* class controls cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc */
 /* class names are capitalized */
@@ -46,6 +50,8 @@ li {
   width:250pt;
   background-color:white;
   text-align:center;
+  margin-left:auto;
+  margin-right:auto;
 }
 #HAIKU_TXT {
   height:70pt;  /* Determined by trial-and-error */
