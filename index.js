@@ -340,17 +340,21 @@ Labahumushi lalidinga abantu.
 // Feature detection.
   var browser_source = navigator.appName;
   var browser_target = document.getElementById('BROWSER');
-  var browser_accept = ' may work (Please report failure)';
+  var browser_inform = ' may work (Please report failure)';
+  var browser_accept = false;
   switch(browser_source) {
       case 'Netscape':
-          browser_accept = ' OK'; break;
+          browser_inform = ' OK';
+          browser_accept = true;
+          break;
   }
   browser_target.innerHTML = (
           '<small><br />Browser ' +
           browser_source +
           ': ' +
-          browser_accept +
+          browser_inform +
           '</small>');
+  if (!browser_accept) return;
 //_____________________________________________________________________________
 
 var width = 6;                  // Specify horizontal language count
