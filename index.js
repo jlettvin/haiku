@@ -336,6 +336,23 @@ Labahumushi lalidinga abantu.
     },
 };
 
+//_____________________________________________________________________________
+// Feature detection.
+  var browser_source = navigator.appName;
+  var browser_target = document.getElementById('BROWSER');
+  var browser_accept = ' may work (Please report failure)';
+  switch(browser_source) {
+      case 'Netscape':
+          browser_accept = ' OK'; break;
+  }
+  browser_target.innerHTML = (
+          '<small><br />Browser ' +
+          browser_source +
+          ': ' +
+          browser_accept +
+          '</small>');
+//_____________________________________________________________________________
+
 var width = 6;                  // Specify horizontal language count
 
 //requirejs.config({"baseUrl": ""});
