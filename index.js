@@ -120,7 +120,7 @@ Tradución necesario.
  "Gujarati|ગુજરાતી": HAIKU(function() {/*
 અનુવાદ જરૂર છે.
 */}),
- "Haitian Creole|Kreyòl ayisyen": HAIKU(function() {/*
+ "Haitian_Creole|Kreyòl ayisyen": HAIKU(function() {/*
 Tradiksyon nesesè.
 */}),
  "Hausa|Hausa": HAIKU(function() {/*
@@ -173,7 +173,7 @@ Traduzione necessario.
  "Korean|한국어": HAIKU(function() {/*
 번역이 필요합니다.
 */}),
- "Kurdish (Kurmanji)|Kurdî (kurmancî)": HAIKU(function() {/*
+ "Kurdish_(Kurmanji)|Kurdî (kurmancî)": HAIKU(function() {/*
 Werger pêwîst.
 */}),
  "Kyrgyz|Кыргызча": HAIKU(function() {/*
@@ -217,7 +217,7 @@ Translation hiahiatia.
  "Mongolian|Монгол": HAIKU(function() {/*
 Орчуулга хэрэгтэй.
 */}),
- "Myanmar (Burmese)|မြန်မာ (ဗမာ)": HAIKU(function() {/*
+ "Myanmar_(Burmese)|မြန်မာ (ဗမာ)": HAIKU(function() {/*
 ဘာသာပြန်ချက်လိုအပ်ခဲ့ပါတယ်။
 */}),
  "Nepali|नेपाली": HAIKU(function() {/*
@@ -250,7 +250,7 @@ E nevoie de traducere.
  "Samoan|Samoa": HAIKU(function() {/*
 manaomia Faaliliuga.
 */}),
- "Scots Gaelic|Gàidhlig": HAIKU(function() {/*
+ "Scots_Gaelic|Gàidhlig": HAIKU(function() {/*
 Eadar-theangachadh a dhìth.
 */}),
  "Serbian|Српски": HAIKU(function() {/*
