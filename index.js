@@ -350,12 +350,23 @@ Labahumushi lalidinga abantu.
   if (browser_accept) browser_inform = ' OK';
 
   var browser_target = document.getElementById('BROWSER');
+  /*
   browser_target.innerHTML = (
           '<small><br />Browser ' +
           browser_source +
           browser_inform +
           //', ' + navigator.userAgent +
           '</small>');
+   */
+
+  var instructions = "This browser doesn't support this code.";
+  if (browser_accept) instructions = (
+            "Hover on a language to show a translation.  " + 
+            "Click on a language to make it the default"
+          );
+  var instructions_target = document.getElementById('DIRECTIONS');
+  instructions_target.innerHTML = instructions;
+
   if (browser_accept) {
 //_____________________________________________________________________________
 
