@@ -338,14 +338,32 @@ Labahumushi lalidinga abantu.
 
 //_____________________________________________________________________________
 // Feature detection.
+  var browser = {
+      'opera':   { 'test': is.opera,    'accept': true  },
+      'chrome':  { 'test': is.chrome,   'accept': true  },
+      'firefox': { 'test': is.firefox,  'accept': true  },
+      'edge':    { 'test': is.edge,     'accept': true  },
+      'safari':  { 'test': is.safari,   'accept': true  },
+      'ie':      { 'test': is.ie,       'accept': false },
+      'opera':   { 'test': is.opera,    'accept': true  },
+  };
   var browser_accept = false;
   var browser_source = 'untested browser';
-  if      (is.opera()  ) { browser_accept = true; browser_source = 'opera';   }
-  else if (is.chrome() ) { browser_accept = true; browser_source = 'chrome';  }
-  else if (is.firefox()) { browser_accept = true; browser_source = 'firefox'; }
-  else if (is.edge()   ) { browser_accept = true; browser_source = 'edge';    }
-  else if (is.safari() ) { browser_accept = true; browser_source = 'safari';  }
-  else if (is.ie()     ) {                        browser_source = 'ie';      }
+
+  for (var check in browser) {
+      if (browser[check].test()) {
+          browser_source = check;
+          browser_accept = browser[check].accept;
+          break;
+      }
+  }
+
+  //if      (is.opera()  ) { browser_accept = true; browser_source = 'opera';   }
+  //else if (is.chrome() ) { browser_accept = true; browser_source = 'chrome';  }
+  //else if (is.firefox()) { browser_accept = true; browser_source = 'firefox'; }
+  //else if (is.edge()   ) { browser_accept = true; browser_source = 'edge';    }
+  //else if (is.safari() ) { browser_accept = true; browser_source = 'safari';  }
+  //else if (is.ie()     ) {                        browser_source = 'ie';      }
 
   /*
   var browser_inform = ' Please report browser and failure.';
