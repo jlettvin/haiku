@@ -349,8 +349,14 @@ Labahumushi lalidinga abantu.
   };
   var browser_accept = false;
   var browser_source = 'untested browser';
+  var browser_found  = false;
+  var instructions = browser_source +
+    " doesn't support this haiku. Try one of<br />";
+  var browsers = [];
+  $.each(browser, function(key, value) { browsers.push(key); });
+  instructions += '[' + browsers.join(' ') + ']';
 
-  for (var check in browser) {
+  for (var check of browsers) {
       if (browser[check].test()) {
           browser_source = check;
           browser_accept = browser[check].accept;
@@ -358,26 +364,6 @@ Labahumushi lalidinga abantu.
       }
   }
 
-  //if      (is.opera()  ) { browser_accept = true; browser_source = 'opera';   }
-  //else if (is.chrome() ) { browser_accept = true; browser_source = 'chrome';  }
-  //else if (is.firefox()) { browser_accept = true; browser_source = 'firefox'; }
-  //else if (is.edge()   ) { browser_accept = true; browser_source = 'edge';    }
-  //else if (is.safari() ) { browser_accept = true; browser_source = 'safari';  }
-  //else if (is.ie()     ) {                        browser_source = 'ie';      }
-
-  /*
-  var browser_inform = ' Please report browser and failure.';
-  if (browser_accept) browser_inform = ' OK';
-  var browser_target = document.getElementById('BROWSER');
-  browser_target.innerHTML = (
-          '<small><br />Browser ' +
-          browser_source +
-          browser_inform +
-          //', ' + navigator.userAgent +
-          '</small>');
-   */
-
-  var instructions = browser_source + " doesn't support this haiku.";
   if (browser_accept) instructions = (
             "Hover on a language to show a translation.  " + 
             "Click on a language to make it the default"
