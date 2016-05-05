@@ -364,12 +364,15 @@ Labahumushi lalidinga abantu.
       }
   }
 
-  if (browser_accept) instructions = (
-            "Hover on a language to show a translation.  " + 
-            "Click on a language to make it the default"
-          );
-  var instructions_target = document.getElementById('DIRECTIONS');
-  instructions_target.innerHTML = instructions;
+  if (browser_accept) {
+    var instructions_target = document.getElementById('DIRECTIONS');
+    instructions_target.innerHTML = "" +
+        "Hover on a language to show a translation." + 
+        "  Click on a language to make it the default";
+  } else {
+    var haiku_text_target = document.getElementById('HAIKU_TEXT');
+    haiku_text_target = instructions;
+  }
 
   if (browser_accept) {
 //_____________________________________________________________________________
