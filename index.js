@@ -349,11 +349,8 @@ Labahumushi lalidinga abantu.
   var browser_accept = false;
   var browser_source = 'untested browser';
   var browser_found  = false;
-  var instructions = browser_source +
-    " doesn't support this haiku. Try one of<br />";
   var browsers = [];
   $.each(browser, function(key, value) { browsers.push(key); });
-  instructions += '[' + browsers.join(' ') + ']';
 
   for (var check of browsers) {
       if (browser[check].test()) {
@@ -370,7 +367,9 @@ Labahumushi lalidinga abantu.
         "  Click on a language to make it the default";
   } else {
     var haiku_text_target = document.getElementById('HAIKU_TEXT');
-    haiku_text_target = instructions;
+    haiku_text_target = browser_source +
+      " doesn't support this haiku. Try one of<br />" +
+      "[" + browsers.join(" ") + "]";
   }
 
   if (browser_accept) {
