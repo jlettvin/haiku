@@ -346,11 +346,11 @@ Labahumushi lalidinga abantu.
   else if (is.edge()   ) { browser_accept = true; browser_source = 'edge';    }
   else if (is.safari() ) { browser_accept = true; browser_source = 'safari';  }
   else if (is.ie()     ) {                        browser_source = 'ie';      }
+
+  /*
   var browser_inform = ' Please report browser and failure.';
   if (browser_accept) browser_inform = ' OK';
-
   var browser_target = document.getElementById('BROWSER');
-  /*
   browser_target.innerHTML = (
           '<small><br />Browser ' +
           browser_source +
@@ -359,7 +359,7 @@ Labahumushi lalidinga abantu.
           '</small>');
    */
 
-  var instructions = "This browser doesn't support this code.";
+  var instructions = browser_source + " doesn't support this haiku.";
   if (browser_accept) instructions = (
             "Hover on a language to show a translation.  " + 
             "Click on a language to make it the default"
