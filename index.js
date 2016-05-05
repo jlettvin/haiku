@@ -348,8 +348,8 @@ Labahumushi lalidinga abantu.
   };
   var browser_accept = false;
   var browser_source = 'untested browser';
-  var browser_found  = false;
   var browsers = [];
+
   $.each(browser, function(key, value) { browsers.push(key); });
 
   for (var check of browsers) {
