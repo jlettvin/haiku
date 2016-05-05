@@ -338,21 +338,23 @@ Labahumushi lalidinga abantu.
 
 //_____________________________________________________________________________
 // Feature detection.
-  var browser_source = navigator.appName;
-  var browser_target = document.getElementById('BROWSER');
-  var browser_inform = ' may work (Please report failure)';
   var browser_accept = false;
-  switch(browser_source) {
-      case 'Netscape':
-          browser_inform = ' OK';
-          browser_accept = true;
-          break;
-  }
+  var browser_source = 'untested browser';
+  if      (is.opera()  ) { browser_accept = true; browser_source = 'opera';   }
+  else if (is.chrome() ) { browser_accept = true; browser_source = 'chrome';  }
+  else if (is.firefox()) { browser_accept = true; browser_source = 'firefox'; }
+  else if (is.edge()   ) { browser_accept = true; browser_source = 'edge';    }
+  else if (is.safari() ) { browser_accept = true; browser_source = 'safari';  }
+  else if (is.ie()     ) {                        browser_source = 'ie';      }
+  var browser_inform = ' Please report browser and failure.';
+  if (browser_accept) browser_inform = ' OK';
+
+  var browser_target = document.getElementById('BROWSER');
   browser_target.innerHTML = (
           '<small><br />Browser ' +
           browser_source +
-          ': ' +
           browser_inform +
+          //', ' + navigator.userAgent +
           '</small>');
   if (browser_accept) {
 //_____________________________________________________________________________
