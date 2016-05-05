@@ -339,13 +339,12 @@ Labahumushi lalidinga abantu.
 //_____________________________________________________________________________
 // Feature detection.
   var browser = {
-      'opera':   { 'test': is.opera,    'accept': true  },
-      'chrome':  { 'test': is.chrome,   'accept': true  },
-      'firefox': { 'test': is.firefox,  'accept': true  },
-      'edge':    { 'test': is.edge,     'accept': true  },
-      'safari':  { 'test': is.safari,   'accept': true  },
-      'ie':      { 'test': is.ie,       'accept': false },
-      'opera':   { 'test': is.opera,    'accept': true  },
+      'opera':              { 'test': is.opera,    'accept': true  },
+      'google chrome':      { 'test': is.chrome,   'accept': true  },
+      'firefox':            { 'test': is.firefox,  'accept': true  },
+      'microsoft edge':     { 'test': is.edge,     'accept': true  },
+      'apple safari':       { 'test': is.safari,   'accept': true  },
+      'microsoft ie':       { 'test': is.ie,       'accept': false },
   };
   var browser_accept = false;
   var browser_source = 'untested browser';
