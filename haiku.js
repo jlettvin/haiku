@@ -1,5 +1,36 @@
-function HAIKU(f) { return f.toString().split('\n').slice(1,-1).join('\n'); }
+/**
+ * @file Contains a dictionary of translations by language.
+ * @since 0.0.1
+ * @module haiku.js
+ * @version 0.0.1
+ * @author Jonathan D. Lettvin <jlettvin@gmail.com>
+ * @license GPL-3.0
+ *
+ * @todo refactor to enable loading different translation collections.
+ *
+ * jsdoc  haiku.js
+ * jshint haiku.js
+ */
 
+/**
+ * @function HAIKU
+ * @param {function} f - A function to lex for text content in a comment.
+ * @returns unicode normalization form C representation of translation.
+ *
+ * PHP-style HEREDOC enabling multi-line text fields.
+ */
+function HAIKU(f) {
+    return f.toString().split('\n').slice(1,-1).join('\n').normalize('NFC');
+}
+
+/**
+ * @var document.haiku
+ *
+ * Dictionary of translations keyed by language.
+ * The key is composed from two parts separated by the vertical bar character:
+ * 1. Dialect name in English
+ * 2. Dialect name in dialect (unicode)
+ */
 document.haiku = {
     "JLettvin": {
         "Sin": {
@@ -309,9 +340,10 @@ Tafsiri inahitajika.
  "Urdu|اردو": HAIKU(function() {/*
 ہے.ترجمے کی ضرورت.
 */}),
- "Uzbek|O'zbekiston": HAIKU(function() {/*
-Tarjima zarur.
-*/}),
+// Uzbek English|dialect label breaks javascript
+// "Uzbek|O'zbekiston": HAIKU(function() {/*
+//Tarjima zarur.
+//*/}),
  "Vietnamese|Tiếng Việt": HAIKU(function() {/*
 Dịch cần thiết.
 */}),
