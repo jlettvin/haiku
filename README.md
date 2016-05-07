@@ -1,1 +1,1 @@
-# haiku
+# haikuThis project introduces a very high speed menu selection fordisplaying the same content in different languages.[https://rawgit.com/jlettvin/haiku/master/index.html]
