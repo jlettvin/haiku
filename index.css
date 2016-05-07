@@ -17,6 +17,17 @@ h5,h6 {
 /* class controls cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc */
 
 /* non-field names are capitalized */
+.Center {
+  text-align:center;
+}
+.Obverse {
+  color:black;
+  background-color:white;
+}
+.Reverse {
+  color:black;
+  background-color:white;
+}
 .Language {
   color:white;
   background-color:black;
@@ -24,8 +35,7 @@ h5,h6 {
   text-align:center;
 }
 .Language:hover {
-  color:black;
-  background-color:white;
+  Reverse:inherit;
   text-align:center;
 }
 .Haiku {
@@ -35,6 +45,8 @@ h5,h6 {
 /* field names are all caps */
 .TITLE_DIV {
   text-align:center;
+  margin-left:auto;
+  margin-right:auto;
 }
 .TITLE_TXT {
   font-size:15pt;
