@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file Contains code to populate labeled HTML fields.
+ * @since 0.0.1
+ * @module index.js
+ * @version 0.0.1
+ * @author Jonathan D. Lettvin &lt;jlettvin@gmail.com>
+ * @license GPL-3.0
+ *
+ * jsdoc  index.js
+ * jshint index.js
+ */
+
+/*jshint globalstrict: false*/
+
+$(document).ready(function () {
+    /**
+     * @function anonymous self-executing.
+     */
+
+    //___________________________________________________________________________
+    // Browser detection.
+    // Unfortunately, feature detection will not do.
+    // MSIE simply doesn't function well enough to support our needs.
+
+    /**
+     * @var {dictionary} browser
+     * Contains a list of browsers and their detection/acceptance.
+     *
+     * This dictionary requires the module
+     * {@link cdnjs.cloudflare.com/ajax/libs/is_js/0.8.0/is.min.js}.
+     * The "is" library implements functions that aid in identifying browsers.
+     */
+    var browser = {
+        'opera':              { 'test': is.opera,    'accept': true  },
+        'google chrome':      { 'test': is.chrome,   'accept': true  },
+        'firefox':            { 'test': is.firefox,  'accept': true  },
+        'microsoft edge':     { 'test': is.edge,     'accept': true  },
+        'apple safari':       { 'test': is.safari,   'accept': true  },
+        'microsoft ie':       { 'test': is.ie,       'accept': false },
+        };
+
+    /**
+     * @var {array} browsers - * a list of browser names to use as keys.
+     *
+     * Before modifying the browser map, collect all the listed keys.
+     */
+    var browsers = Object.keys(browser);
+    var check;
+
+    /**
+     * @var {bool} browser.accept - flags this browser as usable by haiku.
+     * @var {string} browser.name - identifies the browser.
+     * These variables are stored in the browser variable.
+     */
+    browser.accept = false;
+    browser.name = 'untested browser';
+
+    // Perform the browser detection using the cdnjs is.js library functions.
+    for (var i in browsers) {
+        var name = browsers[i];
+        if (browser[name].test()) {
+            browser.name = name;
+            browser.accept = browser[name].accept;
+            break;
+        }
+    }
+
+    // Report on acceptance by replacing DIRECTIONS with instructions.
+    if (browser.accept) {
+      document.getElementById('DIRECTIONS').innerHTML = "" +
+          "Hover on a language to show a translation." + 
+          "  Click on a language to make it the default";
+    } else {
+      document.getElementById('HAIKU_TEXT').innerHTML = "" +
+          browser.name +
+          " doesn't support this haiku. Try one of&lt;br />" +
+          "[" + browsers.join(" ") + "]";
+    }
+
+    //___________________________________________________________________________
+    // If an acceptable browser was found, populate the document and
+    // prepare event responses.
+    if (browser.accept) {
+
+       // Prepare a namespace to make functions visible to event handlers.
+       document.haiku.code = {};
+
+       /**
+        * @var {int} columns - maximum column count.
+        * @var {dictionary} data - source of texts keyed by language.
+        * @var {object} code - common point for event access to functions.
+        * @var {string} CODE - common point string for event handlers.
+        * @var {string} SPAN3LEFT - attributes for displaying language.
+        * @var {string} SPAN3RIGHT - attributes for displaying controls.
+        * @var {dictionary} jlettvin - collection of collection of translations.
+        * @var {dictionary} haiku - collection of translations.
+        * @var {array} keys - sequence of "English|dialect" keys to haiku.
+        * @var {int} languages - count of languages found in haiku.
+        */
+        var columns         = 6;                  // Specify horizontal language count
+        var data          = document.haiku;
+        var code          = data.code;
+        var CODE          = 'document.haiku.code.';
+        var SPAN3LEFT     = ' colspan="3" align="left" bgcolor="white"';
+        var SPAN3RIGHT    = ' colspan="3" align="right" ';
+        var jlettvin      = data.JLettvin;
+        var haiku         = jlettvin.Sin;
+        var keys          = [];
+        var languages     = 0;
+
+        keys = Object.keys(haiku);
+        languages = keys.length;
+
+        // Prepare default language and whether to use dialect in table cells.
+        document.haiku.speaking   = 'English|English';
+        document.haiku.dialect    = true;
+
+        /**
+         * @var {function} code.display - copies text from haiku to table cell.
+         * @function document.haiku.code.display
+         * @param {string} key - "language|dialect" key for haiku dictionary.
+         */
+        code.display = function (key) {
+          /**
+           * @var {array} pair - [English, dialect] from "English|dialect".
+           * @var {string} dialect - Opposite of paired language in table cell.
+           * @var {string} source - NFC translation of text from haiku.
+           * @var {object{ target - HTML cell in which to place text.
+           */
+          var pair        = key.split('|');  // 0:English, 1:dialect
+          var dialect     = pair[+!document.haiku.dialect];
+          var source      = document.haiku.JLettvin.Sin[key];
+          var target      = document.getElementById('HAIKU_TXT');
+
+          // Get existing translation, or declare that a translation is needed.
+          target.innerHTML = "Translation needed.";
+          if (typeof source != "undefined") {
+              target.innerHTML = source.trim() || "Translation needed.";
+          }
+
+          // Show what language is current.
+          document.getElementById('current').innerHTML = dialect;
+        };
+
+        /**
+         * @var {function} code.mouseEnter
+         * @var {function} code.mouseClick
+         * @var {function} code.mouseLeave
+         * @function document.haiku.code.mouseEnter
+         * @function document.haiku.code.mouseClick
+         * @function document.haiku.code.mouseLeave
+         *
+         * Put functions where events can call them.
+         * These funs handle mouse hover display changes.
+         * CSS handles display attributes.
+         */
+        code.mouseEnter = function (key) {                code.display(key); };
+        code.mouseClick = function (key) {   document.haiku.speaking = key ; };
+        code.mouseLeave = function (key) {
+            /**
+             * @var {array} pair - [English, dialect] from "English|dialect".
+             */
+            var pair = document.haiku.speaking.split('|');
+            code.display(document.haiku.speaking);
+            //console.log(key);
+        };
+
+        /**
+         * @var {function} code.fillTable
+         * @function document.haiku.code.fillTable
+         *
+         * Generate menu on-the-fly from language names (keys from dictionary)
+         */
+        code.fillTable = function () {
+          /**
+           * @var {string} table - Text to put in table main display cell.
+           */
+          var table    = '&lt;table align="center">';
+          table       += '&lt;tr height="40pt">';
+          table       += '&lt;th id="current"' + SPAN3LEFT  + '>&lt;/th>';
+          table       += '&lt;th id="switch" ' + SPAN3RIGHT + '>&lt;/th>';
+          table       += '&lt;/tr>';
+          var rows = _.range(0, languages, columns);
+          var cols = _.range(columns);
+          for (var y in rows) {
+            var row = rows[y];
+
+            // Make a new table row
+            table += '&lt;tr>';
+            for (var x in cols) {
+              var col = cols[x];
+              /**
+               * @var {int} I - row + col where row increments by column-count.
+               * @var {string} id - "English|dialect" key
+               * @var {string} ID - arglist for mouse event function from id.
+               * @var {array} pair - [English, dialect] from "English|dialect".
+               * @var {string} dialect - portion of pair to put in table cell.
+               * @var {string} onEnter - HTML event attribute string.
+               * @var {string} onClick - HTML event attribute string.
+               * @var {string} onLeave - HTML event attribute string.
+               * @var {string} onMouse - combined HTML event attribute strings.
+               */
+              var I = row + col;
+              console.log(I);
+              if (I >= languages) break;  // Quit if no more languages.
+
+              var id      = keys[I];
+              var ID      = '(\'' + id + '\')';
+              var pair    = id.split('|');  // 0:English, 1:dialect
+              // Display language name in either English or native alphabet
+              // document.haiku.showing can be toggled.
+              var dialect = pair[+document.haiku.dialect];
+              var onEnter = ' onmouseenter="' + CODE + 'mouseEnter' + ID + '"';
+              var onClick =      ' onclick="' + CODE + 'mouseClick' + ID + '"';
+              var onLeave = ' onmouseleave="' + CODE + 'mouseLeave' + ID + '"';
+              var onMouse = onEnter + onLeave + onClick;
+
+              // Fill table cell.
+              table += '&lt;td class="Language" ' + onMouse + '>';
+              table += dialect + '&lt;/td>';
+            }
+            table += '&lt;/tr>';
+          }
+          table += '&lt;/table>';
+
+          // Fill the menu with the generated table
+          $('.MENU').html(table);
+        };
+
+        /** Initialize display for default. */
+        code.fillTable();
+        code.display(document.haiku.speaking);
+    }
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="haiku.module_js.html">haiku.js</a></li><li><a href="index.module_js.html">index.js</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat May 07 2016 16:23:07 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
