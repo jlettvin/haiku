@@ -67,11 +67,11 @@ $(document).ready(function () {
 
     // Report on acceptance by replacing DIRECTIONS with instructions.
     if (browser.accept) {
-      document.getElementById('DIRECTIONS').innerHTML = "" +
+      document.getElementsByClassName('DIRECTIONS')[0].innerHTML = "" +
           "Hover on a language to show a translation." + 
           "  Click on a language to make it the default";
     } else {
-      document.getElementById('HAIKU_TEXT').innerHTML = "" +
+      document.getElementsByClassName('HAIKU_TEXT')[0].innerHTML = "" +
           browser.name +
           " doesn't support this haiku. Try one of<br />" +
           "[" + browsers.join(" ") + "]";
@@ -130,7 +130,7 @@ $(document).ready(function () {
           var pair        = key.split('|');  // 0:English, 1:dialect
           var dialect     = pair[+!document.haiku.dialect];
           var source      = document.haiku.JLettvin.Sin[key];
-          var target      = document.getElementById('HAIKU_TXT');
+          var target      = document.getElementsByClassName('HAIKU_TXT')[0];
 
           // Get existing translation, or declare that a translation is needed.
           target.innerHTML = "Translation needed.";
@@ -201,7 +201,6 @@ $(document).ready(function () {
                * @var {string} onMouse - combined HTML event attribute strings.
                */
               var I = row + col;
-              console.log(I);
               if (I >= languages) break;  // Quit if no more languages.
 
               var id      = keys[I];

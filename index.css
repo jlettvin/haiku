@@ -10,12 +10,13 @@ li {
   display:none;
 }
 h5,h6 {
-  margin-top:0px;
-  margin-bottom:0px;
+  margin-top:0;
+  margin-bottom:0;
 }
 
 /* class controls cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc */
-/* class names are capitalized */
+
+/* non-field names are capitalized */
 .Language {
   color:white;
   background-color:black;
@@ -31,36 +32,35 @@ h5,h6 {
   visibility:hidden;
 }
 
-/* id controls iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii */
-/* id names are all caps */
-#TITLE_DIV {
+/* field names are all caps */
+.TITLE_DIV {
   text-align:center;
 }
-#TITLE_TXT {
+.TITLE_TXT {
   font-size:15pt;
 }
-#LEGAL {
+.LEGAL {
   font-size:10pt;
   text-align:center;
 }
-#HAIKU_DIV {
+.HAIKU_DIV {
   text-align:center;
 }
-#HAIKU_BOX {
+.HAIKU_BOX {
   width:250pt;
   background-color:white;
   text-align:center;
   margin-left:auto;
   margin-right:auto;
 }
-#HAIKU_TXT {
+.HAIKU_TXT {
   height:70pt;  /* Determined by trial-and-error */
   white-space:pre;
   font-size:12pt;
   margin-left:auto;
   margin-right:auto;
 }
-#DIRECTIONS {
+.DIRECTIONS {
   font-size:8pt;
   font-style:italic;
   line-height:100%;
