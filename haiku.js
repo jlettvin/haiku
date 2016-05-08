@@ -36,6 +36,11 @@ function HAIKU(f) {
 document.haiku = {
     "JLettvin": {
         "Sin": {
+"Moishe|מוישה": HAIKU(function() {/*
+ Markup output here.
+ Moishe will understand this well.
+ HEREDOC is useful.
+*/}),
 "Afrikaans|Afrikaans": HAIKU(function() {/*
  Te oordeel sonde is sonde.
  God oordeel ons gou genoeg nie.
