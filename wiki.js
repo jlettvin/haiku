@@ -475,6 +475,9 @@ $(document).ready(function () {
     //export {markdown, append};
   }
 
+  document.wiki = {};
+  document.wiki.markdown = markdown;
+
   //MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
   if (typeof module !== 'undefined' && !module.parent) {
     var main = function () {

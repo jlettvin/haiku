@@ -58,14 +58,14 @@ h5,h6 {
   text-align:center;
 }
 .HAIKU_BOX {
-  width:250pt;
+  width:300pt;
   background-color:white;
   text-align:center;
   margin-left:auto;
   margin-right:auto;
 }
 .HAIKU_TXT {
-  height:70pt;  /* Determined by trial-and-error */
+  height:80pt;  /* Determined by trial-and-error */
   white-space:pre;
   font-size:12pt;
   margin-left:auto;
