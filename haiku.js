@@ -37,9 +37,10 @@ document.haiku = {
     "JLettvin": {
         "Sin": {
 "Moishe|מוישה": HAIKU(function() {/*
- Markup output here.
- Moishe will understand this well.
- HEREDOC is useful.
+== For Moishe ==
+ Wiki output here.
+ Do you see its usefulness?
+ Markdown in HEREDOC.
 */}),
 "Afrikaans|Afrikaans": HAIKU(function() {/*
  Te oordeel sonde is sonde.
