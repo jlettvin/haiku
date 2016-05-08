@@ -36,342 +36,369 @@ function HAIKU(f) {
 document.haiku = {
     "JLettvin": {
         "Sin": {
-"Moishe|מוישה": HAIKU(function() {/*
-== For Moishe ==
- Wiki output here.
- Do you see its usefulness?
- Markdown in HEREDOC.
-*/}),
-"Afrikaans|Afrikaans": HAIKU(function() {/*
+            "Moishe|מוישה": HAIKU(function() {/*
+== Moishe's haiku ==
+ !/Wiki output here./!
+ Do you see its !=usefulness?=!
+ Markdown in !_HEREDOC_!.
+*/}),  //______________________________________________________________________
+
+            "Markup|Enhance": HAIKU(function() {/*
+=== FONT EFFECTS ===
+!=Bold=!, !/italic/!, !_underline_!, !-strike-!.
+*/}),  //______________________________________________________________________
+
+//"Markup|Equations": HAIKU(function() {/*
+//=== MATH ===
+//$$e^{i \pi} + 1 = 0$$
+//*/}),  //______________________________________________________________________
+
+//"Lists|Markup": HAIKU(function() {/*
+//=== LISTS ===
+//*bullet 1
+//*bullet 2
+//#number 1
+//#number 2
+//*/}),  //______________________________________________________________________
+
+//"Tables|Markup": HAIKU(function() {/*
+//=== TABLES ===
+//|Breakfast|$5.08
+//|Lunch|$7.25
+//|Dinner|$13.59
+//|Total|$25.92
+//*/}),  //______________________________________________________________________
+
+            "Afrikaans|Afrikaans": HAIKU(function() {/*
  Te oordeel sonde is sonde.
  God oordeel ons gou genoeg nie.
  Kom ons wees vriende tot dan.
-*/}),
- "Albanian|Shqiptar": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Albanian|Shqiptar": HAIKU(function() {/*
  Duke gjykuar mëkatin është mëkat.
  Perëndia na gjykon mjaft shpejt.
  Le të jenë miqtë deri atëherë.
-*/}),
- "Amharic|አማርኛ": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Amharic|አማርኛ": HAIKU(function() {/*
  ኃጢአት ላይ ከመፍረድ ኃጢአት ነው.
  አምላክ በቅርቡ በቂ ይፈርዳል.
  የአምላክ በዚያን ጊዜ ድረስ ጓደኞች እንሁን.
-*/}),
- "Arabic|العربية": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Arabic|العربية": HAIKU(function() {/*
  الحكم على الخطيئة هي الخطيئة.
  الله يحكم لنا قريبا بما فيه الكفاية.
  دعنا نكون أصدقاء حتى ذلك الحين.
-*/}),
- "Armenian|հայերեն": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Armenian|հայերեն": HAIKU(function() {/*
  Դատելով մեղքը մեղք է:
  Աստված դատում մեզ շուտով բավարար.
  Եկեք լինի Ընկերներ մինչ այդ:
-*/}),
- "Azerbaijani|Azərbaycan": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Azerbaijani|Azərbaycan": HAIKU(function() {/*
  günah Münsiflər günahdır.
  Allah bizə tezliklə kifayət qədər hökm.
  ardından qədər dost olsun.
-*/}),
- "Basque|Euskal": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Basque|Euskal": HAIKU(function() {/*
  sin ikusita sin da.
  Jainkoak epaitu digu bezain azkar.
  Izan gaitezen lagun ordura arte.
-*/}),
- "Belarusian|беларускі": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Belarusian|беларускі": HAIKU(function() {/*
  Калі судзіць грэх з'яўляецца грахом.
  Бог судзіць нас дастаткова хутка.
  Давайце будзем сябрамі, пакуль пазней.
-*/}),
- "Bengali|বাঙালি": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Bengali|বাঙালি": HAIKU(function() {/*
  পাপ বিচার পাপ নেই.
  ঈশ্বর আমাদের শীঘ্রই পর্যাপ্ত ফয়সালা করেন.
  আমাদের তখন পর্যন্ত বন্ধুদের হউক.
-*/}),
- "Bosnian|Bosanski": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Bosnian|Bosanski": HAIKU(function() {/*
  potreban prevod.
-*/}),
- "Bulgarian|български": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Bulgarian|български": HAIKU(function() {/*
  Превод необходимо.
-*/}),
- "Catalan|Català": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Catalan|Català": HAIKU(function() {/*
  La traducció necessària.
-*/}),
- "Cebuano|Cebuano": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Cebuano|Cebuano": HAIKU(function() {/*
  gikinahanglan sa paghubad.
-*/}),
- "Chichewa|Chichewa": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Chichewa|Chichewa": HAIKU(function() {/*
  Translation zofunika.
-*/}),
- "Chinese|中文": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Chinese|中文": HAIKU(function() {/*
  翻譯需要。
-*/}),
- "Corsican|Corsu": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Corsican|Corsu": HAIKU(function() {/*
  Traduzione bisognu.
-*/}),
- "Croatian|Hrvatski": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Croatian|Hrvatski": HAIKU(function() {/*
  Prevođenje potrebno.
-*/}),
- "Czech|čeština": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Czech|čeština": HAIKU(function() {/*
  Překlad potřeba.
-*/}),
- "Danish|Dansk": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Danish|Dansk": HAIKU(function() {/*
  Oversættelse nødvendig.
-*/}),
- "Dutch|Nederlands": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Dutch|Nederlands": HAIKU(function() {/*
  Vertaling nodig.
-*/}),
- "English|English": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "English|English": HAIKU(function() {/*
  'Tis sin to judge sin.
  God sorts us out soon enough.
  Let's be friends 'til then.
-*/}),
- "Esperanto|Esperanto": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Esperanto|Esperanto": HAIKU(function() {/*
  Translation bezonis.
-*/}),
- "Estonian|Eesti": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Estonian|Eesti": HAIKU(function() {/*
  Tõlge vaja.
-*/}),
- "Filipino|Pilipino": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Filipino|Pilipino": HAIKU(function() {/*
  kailangan Translation.
-*/}),
- "Finnish|Suomalainen": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Finnish|Suomalainen": HAIKU(function() {/*
  Käännös tarvitaan.
-*/}),
- "French|Français": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "French|Français": HAIKU(function() {/*
  Traduction nécessaire.
-*/}),
- "Frisian|Frysk": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Frisian|Frysk": HAIKU(function() {/*
  Oersetting nedich.
-*/}),
- "Galician|Galego": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Galician|Galego": HAIKU(function() {/*
  Tradución necesario.
-*/}),
- "Georgian|ქართული": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Georgian|ქართული": HAIKU(function() {/*
  თარგმანი საჭირო.
-*/}),
- "German|Deutsche": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "German|Deutsche": HAIKU(function() {/*
  Übersetzung benötigt.
-*/}),
- "Greek|ελληνικά": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Greek|ελληνικά": HAIKU(function() {/*
  χρειάζεται μετάφραση.
-*/}),
- "Gujarati|ગુજરાતી": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Gujarati|ગુજરાતી": HAIKU(function() {/*
  અનુવાદ જરૂર છે.
-*/}),
- "Haitian Creole|Kreyòl ayisyen": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Haitian Creole|Kreyòl ayisyen": HAIKU(function() {/*
  Tradiksyon nesesè.
-*/}),
- "Hausa|Hausa": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Hausa|Hausa": HAIKU(function() {/*
  Translation da ake bukata.
-*/}),
- "Hawaiian|ʻŌlelo Hawaiʻi": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Hawaiian|ʻŌlelo Hawaiʻi": HAIKU(function() {/*
  Translation pono.
-*/}),
- "Hebrew|עִברִית": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Hebrew|עִברִית": HAIKU(function() {/*
  תרגום הצורך.
-*/}),
- "Hindi|हिंदी": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Hindi|हिंदी": HAIKU(function() {/*
  अनुवाद की जरूरत है।
-*/}),
- "Hmong|Hmong": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Hmong|Hmong": HAIKU(function() {/*
  Neeg txhais lus yuav tsum tau.
-*/}),
- "Hungarian|Magyar": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Hungarian|Magyar": HAIKU(function() {/*
  Fordítás szükséges.
-*/}),
- "Icelandic|Icelandic": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Icelandic|Icelandic": HAIKU(function() {/*
  Þýðing þörf.
-*/}),
- "Igbo|Igbo": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Igbo|Igbo": HAIKU(function() {/*
  Translation mkpa.
-*/}),
- "Indonesian|Bahasa Indonesia": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Indonesian|Bahasa Indonesia": HAIKU(function() {/*
  Terjemahan diperlukan.
-*/}),
- "Irish|Gaeilge": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Irish|Gaeilge": HAIKU(function() {/*
  Aistriúchán teastáil.
-*/}),
- "Italian|Italiano": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Italian|Italiano": HAIKU(function() {/*
  Traduzione necessario.
-*/}),
- "Japanese|日本語": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Japanese|日本語": HAIKU(function() {/*
  翻訳が必要。
-*/}),
- "Javanese|Jawa": HAIKU(function() {/*
-*/}),
- "Kannada|ಕನ್ನಡ": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Javanese|Jawa": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Kannada|ಕನ್ನಡ": HAIKU(function() {/*
  ಅನುವಾದ ಅಗತ್ಯ.
-*/}),
- "Kazakh|Қазақ": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Kazakh|Қазақ": HAIKU(function() {/*
  Аударма қажет.
-*/}),
- "Khmer|ភាសាខ្មែរ": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Khmer|ភាសាខ្មែរ": HAIKU(function() {/*
  ការបកប្រែត្រូវការជាចាំបាច់។
-*/}),
- "Korean|한국어": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Korean|한국어": HAIKU(function() {/*
  번역이 필요합니다.
-*/}),
- "Kurdish (Kurmanji)|Kurdî (kurmancî)": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Kurdish (Kurmanji)|Kurdî (kurmancî)": HAIKU(function() {/*
  Werger pêwîst.
-*/}),
- "Kyrgyz|Кыргызча": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Kyrgyz|Кыргызча": HAIKU(function() {/*
  Котормо керек.
-*/}),
- "Lao|ລາວ": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Lao|ລາວ": HAIKU(function() {/*
  ການແປພາສາທີ່ຈໍາເປັນ.
-*/}),
- "Latin|Latinae": HAIKU(function() {/*
-*/}),
- "Latvian|Latvijas": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Latin|Latinae": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Latvian|Latvijas": HAIKU(function() {/*
  Tulkošana nepieciešams.
-*/}),
- "Lithuanian|Lietuvos": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Lithuanian|Lietuvos": HAIKU(function() {/*
  Vertimas reikia.
-*/}),
- "Lexembourgish|Lëtzebuergesch": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Lexembourgish|Lëtzebuergesch": HAIKU(function() {/*
  Iwwersetzung waren.
-*/}),
- "Macedonian|Македонски": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Macedonian|Македонски": HAIKU(function() {/*
  Превод е потребно.
-*/}),
- "Malagasy|Malagasy": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Malagasy|Malagasy": HAIKU(function() {/*
  Translation ilaina.
-*/}),
- "Malay|Malay": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Malay|Malay": HAIKU(function() {/*
  Terjemahan diperlukan.
-*/}),
- "Malayalam|മലയാളം": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Malayalam|മലയാളം": HAIKU(function() {/*
  പരിഭാഷ ആവശ്യമായിരുന്നു.
-*/}),
- "Maltese|Malti": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Maltese|Malti": HAIKU(function() {/*
  Traduzzjoni meħtieġa.
-*/}),
- "Maori|Maori": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Maori|Maori": HAIKU(function() {/*
  Translation hiahiatia.
-*/}),
- "Marathi|मराठी": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Marathi|मराठी": HAIKU(function() {/*
  भाषांतर करणे आवश्यक आहे.
-*/}),
- "Mongolian|Монгол": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Mongolian|Монгол": HAIKU(function() {/*
  Орчуулга хэрэгтэй.
-*/}),
- "Myanmar (Burmese)|မြန်မာ (ဗမာ)": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Myanmar (Burmese)|မြန်မာ (ဗမာ)": HAIKU(function() {/*
  ဘာသာပြန်ချက်လိုအပ်ခဲ့ပါတယ်။
-*/}),
- "Nepali|नेपाली": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Nepali|नेपाली": HAIKU(function() {/*
  अनुवाद आवश्यक।
-*/}),
- "Norwegian|Norsk": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Norwegian|Norsk": HAIKU(function() {/*
  Oversettelse nødvendig.
-*/}),
- "Pashto|پښتو": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Pashto|پښتو": HAIKU(function() {/*
  ژباړه ته اړتیا لري.
-*/}),
- "Persian|فارسی": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Persian|فارسی": HAIKU(function() {/*
  ترجمه مورد نیاز است.
-*/}),
- "Polish|Polskie": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Polish|Polskie": HAIKU(function() {/*
  Tłumaczenie potrzebne.
-*/}),
- "Portuguese|Português": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Portuguese|Português": HAIKU(function() {/*
  Tradução necessário.
-*/}),
- "Punjabi|ਪੰਜਾਬੀ ਦੇ": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Punjabi|ਪੰਜਾਬੀ ਦੇ": HAIKU(function() {/*
  ਅਨੁਵਾਦ ਦੀ ਲੋੜ ਸੀ.
-*/}),
- "Romanian|Română": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Romanian|Română": HAIKU(function() {/*
  E nevoie de traducere.
-*/}),
- "Russian|Русский": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Russian|Русский": HAIKU(function() {/*
  E nevoie de traducere.
-*/}),
- "Samoan|Samoa": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Samoan|Samoa": HAIKU(function() {/*
  manaomia Faaliliuga.
-*/}),
- "Scots Gaelic|Gàidhlig": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Scots Gaelic|Gàidhlig": HAIKU(function() {/*
  Eadar-theangachadh a dhìth.
-*/}),
- "Serbian|Српски": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Serbian|Српски": HAIKU(function() {/*
  потребан превод.
-*/}),
- "Sesotho|Sesotho": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Sesotho|Sesotho": HAIKU(function() {/*
  Phetolelo e hlokahalang.
-*/}),
- "Shona|Shona": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Shona|Shona": HAIKU(function() {/*
  Translation inodiwa.
-*/}),
- "Sindhi|سنڌي": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Sindhi|سنڌي": HAIKU(function() {/*
  ترجمو جي ضرورت آهي.
-*/}),
- "Sinhala|සිංහල": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Sinhala|සිංහල": HAIKU(function() {/*
  පරිවර්තනය අවශ්ය විය.
-*/}),
- "Slovak|Slovenský": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Slovak|Slovenský": HAIKU(function() {/*
  Preklad potreba.
-*/}),
- "Slovenian|Slovenski": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Slovenian|Slovenski": HAIKU(function() {/*
  Prevajanje potrebna.
-*/}),
- "Somali|Soomaali": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Somali|Soomaali": HAIKU(function() {/*
  Translation loo baahan yahay.
-*/}),
- "Spanish|Español": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Spanish|Español": HAIKU(function() {/*
  La traducción necesaria.
-*/}),
- "Sundanese|Sunda": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Sundanese|Sunda": HAIKU(function() {/*
  Tarjamahan diperlukeun.
-*/}),
- "Swahili|Kiswahili": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Swahili|Kiswahili": HAIKU(function() {/*
  Tafsiri inahitajika.
-*/}),
- "Swedish|Svensk": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Swedish|Svensk": HAIKU(function() {/*
  Översättning behövs.
-*/}),
- "Tajik|Тоҷикистон": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Tajik|Тоҷикистон": HAIKU(function() {/*
  Тарҷумаи лозим.
-*/}),
- "Tamil|தமிழ்": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Tamil|தமிழ்": HAIKU(function() {/*
  மொழிபெயர்ப்பு தேவை.
-*/}),
- "Telugu|తెలుగు": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Telugu|తెలుగు": HAIKU(function() {/*
  అనువాద అవసరమైన.
-*/}),
- "Thai|ไทย": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Thai|ไทย": HAIKU(function() {/*
  แปลจำเป็น
-*/}),
- "Turkish|Türk": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Turkish|Türk": HAIKU(function() {/*
  Çeviri gerekli.
-*/}),
- "Ukrainian|Український": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Ukrainian|Український": HAIKU(function() {/*
  потрібен переклад.
-*/}),
- "Urdu|اردو": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Urdu|اردو": HAIKU(function() {/*
  ہے.ترجمے کی ضرورت.
-*/}),
+*/}),  //______________________________________________________________________
 // Uzbek English|dialect label breaks javascript
 // "Uzbek|O'zbekiston": HAIKU(function() {/*
 //Tarjima zarur.
-//*/}),
- "Vietnamese|Tiếng Việt": HAIKU(function() {/*
+//*/}),  //______________________________________________________________________
+            "Vietnamese|Tiếng Việt": HAIKU(function() {/*
  Dịch cần thiết.
-*/}),
- "Welsh|Cymraeg": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Welsh|Cymraeg": HAIKU(function() {/*
  angen cyfieithiad.
-*/}),
- "Xhosa|isiXhosa": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Xhosa|isiXhosa": HAIKU(function() {/*
  Translation ezifunekayo.
-*/}),
- "Yiddish|ייִדיש": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Yiddish|ייִדיש": HAIKU(function() {/*
  דזשאַדזשינג זינד איז זינד.
  גאָט סאָרץ אונדז אויס באַלד גענוג.
  זאל ס זיין קאַמראַדז ביז דעמאָלט.
-*/}),
- "Yoruba|Yorùbá": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Yoruba|Yorùbá": HAIKU(function() {/*
  Translation ti nilo.
-*/}),
- "Zulu|Zulu": HAIKU(function() {/*
+*/}),  //______________________________________________________________________
+            "Zulu|Zulu": HAIKU(function() {/*
  Labahumushi lalidinga abantu.
-*/}),
+*/}),  //______________________________________________________________________
         },
     },
 }
