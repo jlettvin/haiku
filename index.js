@@ -12,6 +12,7 @@
 
 /*jshint globalstrict: false*/
 
+//_____________________________________________________________________________
 $(document).ready(function () {
     /**
      * @function anonymous self-executing.

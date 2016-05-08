@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: wiki.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: wiki.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file Contains code to convert custom markdown to HTML.
+ * @since 0.0.1
+ * @module wiki.js
+ * @version 0.0.1
+ * @author Jonathan D. Lettvin &lt;jlettvin@gmail.com>
+ * @license GPL-3.0
+ *
+ * wiki.js implements a wiki markdown language for converting text to HTML.
+ *
+ * jsdoc  wiki.js
+ * jshint wiki.js
+ */
+
+/*jshint globalstrict: false*/
+
+//_____________________________________________________________________________
+
+$(document).ready(function () {
+    /**
+     * @function anonymous self-executing.
+     */
+
+  /**
+   * @var {dictionary} basic_patterns - an ordered associative array
+   * containing an ordering index as a key and a list of strings.
+   * The list of strings has:
+   *    name:           a pattern name used for debugging
+   *    regexp:         a pattern string for identifying replace candidates
+   *    replacement:    a template for replacing
+   *    source:         a sample  input to test functionality
+   *    expect:         a sample output to test functionality
+   */
+  var basic_patterns = {
+    // Forbid index 0 and use only counting numbers
+    1 : ['paragraphs',
+         /\n{2,}/,
+         '\n&lt;p \/>\n',
+         '\n\n\n\n',
+         '\n&lt;p />\n' ],
+
+    // Eliminate multiple empty lines?
+    2 : ['empties',
+         /\\\\\n([\n\s])*/gim,
+         '',
+         'TODO',
+         'TODO'],
+
+    // === h3 ===  == h2 ==  = h1 =
+    3 : ['subsubsection',
+         /^\s*===\s*([^=]+)\s*===$/gim,
+         '&lt;header align="center">&lt;u>&lt;b id="header3">$1&lt;\/b>&lt;\/u>&lt;\/header>',
+          '===L3===',
+          '&lt;header align="center">&lt;u>&lt;b id="header3">L3&lt;/b>&lt;/u>&lt;/header>'],
+    4 : ['subsection',
+         /^\s*==\s*([^=]+)\s*==$/gim,
+        '&lt;header align="center">&lt;u>&lt;b id="header2">$1&lt;\/b>&lt;\/u>&lt;\/header>',
+        '==L2==',
+        '&lt;header align="center">&lt;u>&lt;b id="header2">L2&lt;/b>&lt;/u>&lt;/header>'],
+
+    5 : ['section',
+         /^\s*=\s*([^=]+)\s*=$/gim,
+        '&lt;header align="center">&lt;u>&lt;b id="header1">$1&lt;\/b>&lt;\/u>&lt;\/header>',
+        '=L1=',
+        '&lt;header align="center">&lt;u>&lt;b id="header1">L1&lt;/b>&lt;/u>&lt;/header>'],
+
+    // !_underline_!   !=bold=!   !/italic/!   !-strikethrough-!
+    6 : ['underline',
+         /!_\s*(.*)\s*_!/,
+         '&lt;u>$1&lt;\/u>',
+         '!_underline_!',
+         '&lt;u>underline&lt;/u>'],
+
+    7 : ['bold',
+         /!=\s*(.*)\s*=!/,
+         '&lt;b>$1&lt;\/b>',
+         '!=bold=!',
+         '&lt;b>bold&lt;/b>'],
+
+    8 : ['italic',
+         /!\/\s*(.*)\s*\/!/,
+         '&lt;i>$1&lt;\/i>',
+         '!/italic/!',
+         '&lt;i>italic&lt;/i>'],
+
+    9 : ['strike',
+         /!-\s*(.*)\s*-!/,
+         '&lt;strike>$1&lt;\/strike>',
+         '!-strike-!',
+         '&lt;strike>strike&lt;/strike>'],
+
+    // ![url title]!
+    10 : ['url',
+         /!\[\s*(http[s]?:\/\/)?(\S+)\s*(.*)\s*\]!/,
+        '&lt;a href="http:\/\/$2">$3&lt;\/a>',
+        '![http://lettvin.com]!',
+        '&lt;a href="http://lettvin.com">&lt;/a>'],
+
+    // 3-space, 2-space indent markup +
+    11 : ['indent 3',
+          /^___/gim,
+          '&amp;nbsp;&amp;nbsp;&amp;nbsp;',
+          '___Indent paragraph.',
+          '&amp;nbsp;&amp;nbsp;&amp;nbsp;Indent paragraph.'],
+
+    12 : ['indent 2',
+          /^__/gim,
+          '&amp;nbsp;&amp;nbsp;',
+          '__Indent paragraph.',
+          '&amp;nbsp;&amp;nbsp;Indent paragraph.'],
+
+    // 3-caret, 2-caret linebreak markup +
+    13 : ['newline past',
+          /\^\^\^/gim,
+          '&lt;br clear="all" \/>',
+          'Break^^^line',
+          'Break&lt;br clear="all" />line'],
+
+    14 : ['newline',
+          /\^\^/gim,
+          '&lt;br \/>',
+          'Break^^line',
+          'Break&lt;br />line'],
+
+    // image with reference URL and caption
+    15 : ['image(url+caption)',
+          /!\{\s*(http[s]?:\/\/)(\S+)\s+\s*(http[s]?:\/\/)(\S+)\s+(.*)\s*\}!/,
+          '&lt;a href="$3$4">&lt;figure>' +
+          '&lt;img src="$1$2" width="90" height="90">&lt;\/img>' +
+          '&lt;figcaption>$5&lt;\/figcaption>' +
+          '&lt;\/figure>&lt;\/a>',
+          'TODO',
+          'TODO'],
+
+    // image with caption
+    16 : ['image(caption)',
+          /!\{\s*(http[s]?:\/\/)?(\S+)\s*(.*)\s*\}!/,
+          '&lt;figure>' +
+          '&lt;img src="$1$2" width="90" height="90">&lt;\/img>' +
+          '&lt;figcaption>$3&lt;\/figcaption>' +
+          '&lt;\/figure>',
+          'TODO',
+          'TODO']
+
+  };
+
+  //___________________________________________________________________________
+  /**
+   * @var {dictionary} added_patterns - extension markdown conversions.
+   */
+  var added_patterns = {
+      // TODO make unit tests for added_patterns
+  };
+
+  //___________________________________________________________________________
+  /**
+   * @var {function} append - method to add conversion patterns.
+   * @param {array} pattern - conversion pattern to append.
+   */
+  var append = function (pattern) {
+    var me = 'window.wiki.append[FAIL]: TODO ';
+    if (pattern.length != 5) console.log(me + 'name, re, to, input, output');
+
+    added_patterns[Object.keys(added_patterns).length] = pattern;
+
+    var input = pattern[3], expect = pattern[4];
+    var output = markdown(input);
+    if (expect != output) {
+        console.log(me, input);
+        console.log(me, expect);
+        console.log(me, output);
+    }
+  };
+
+  //___________________________________________________________________________
+  /**
+   * @function HERE
+   * @param {function} f - A function to lex for text content in a comment.
+   * @returns unicode normalization form C representation of translation.
+   *
+   * PHP-style HEREDOC enabling multi-line text fields.
+   */
+  var HERE = function (f) {
+      return f.toString().split('\n').slice(1,-1).join('\n').normalize('NFC');
+  };
+
+  //___________________________________________________________________________
+  /**
+   * @function tag
+   * @param {string} name - a valid HTML tag name.
+   * @param {string} text - text to enclose in a tag.
+   * @returns tag wrapped text.
+   *
+   * generates &lt;tag>text&lt;/tag>.
+   */
+  var tag = function (name, text) { return '&lt;'+name+'>'+text+'&lt;/'+name+'>'; };
+
+  //___________________________________________________________________________
+  /**
+   * @function checkBoxes
+   * @param {string} line - a line beginning with '@'.
+   * @returns HTML implementing a checklist.
+   *
+   * generates a simple table row using checkBox rules:
+   * This function makes a checklist out of lines starting with '@'.
+   * {contents} will follow the translated markdown.
+   *   '@ {contents}' becomes an empty checkbox.
+   *   '@+{contents}' becomes a checked box.
+   *   '@-{contents}' becomes a box with an x instead of check.
+   *   '@1{contents}' becomes a box with a circled 1 (same for 0-9).
+   * other characters are simply used as is in the checkbox.
+   */
+  var checkBoxes = function (line) {
+        var c = line.substr(1,1);
+        var d;
+        if(     c >= '0' &amp;&amp; c &lt;= '9') d = c; //$digit[$c];
+        else if(c=='+') d = '&lt;b style="background-color:white; color:#00AA00;">&amp;#x2714;&lt;/b>';
+        else if(c=='-') d = '&lt;b style="background-color:white; color:red;">&amp;#x2718;&lt;/b>';
+        else            d = c; //""; //"&amp;#x20de;";
+        var s = line.substr(2).trim();
+        return '&lt;tr>&lt;td>'+d+'&lt;/td>&lt;td style="background-color:white">'+s+'&lt;/td>&lt;/tr>';
+  };
+
+  //___________________________________________________________________________
+  /**
+   * @function listpre
+   * @param {string} source - original text to be split into lines.
+   * @param {string} found - a debugger object to hold progress info
+   * @returns source with conversions performed on &lt;ul>&lt;ol>&lt;pre>&lt;table>.
+   *
+   * @todo Improve this algorithm and implement nesting.
+   * This function handles all lists and &lt;pre>{contents}&lt;/pre> use.
+   *   '* item'       => &lt;ul>&lt;li>item&lt;/li>&lt;/ul>
+   *   '# item'       => &lt;ol>&lt;li>item&lt;/li>&lt;/ol>
+   *   '@ item'       => (see checkBoxes)
+   *   '  item'       => &lt;pre>\nitem\n&lt;/pre>
+   * NOTE: table in this function implement checkBoxes.
+   * Tables using the "^|..." markdown are handled in the tables method.
+   */
+  var listpre = function (source, found) {
+        var target = [];
+        var pre = false;
+        var bul = false;
+        var num = false;
+        var chk = false;
+        var tbl = '&lt;table style="border:1px solid red;color:black;">';
+        var buffer = source.split("\n");
+        var have = new Set();
+        for (var no = 0; no &lt; buffer.length; ++no) {
+            line = buffer[no];
+            if(line.match(/^ /)) {
+                have.add('preformatted');
+                if ( chk ) { target.push('&lt;/table>\n'); chk = false; }
+                if ( num ) { target.push(   '&lt;/ol>\n'); num = false; }
+                if ( bul ) { target.push(   '&lt;/ul>\n'); bul = false; }
+                if (!pre ) { target.push(   '&lt;pre>'  ); pre =  true; }
+            } else if(line.match(/^\*/)) {
+                have.add('bulleted');
+                if ( chk ) { target.push('&lt;/table>\n'); chk = false; }
+                if ( num ) { target.push(   '&lt;/ol>\n'); num = false; }
+                if ( pre ) { target.push(   '&lt;pre>\n'); pre = false; }
+                if (!bul ) { target.push(    '&lt;ul>\n'); bul =  true; }
+            } else if(line.match(/^\#/)) {
+                have.add('numbered');
+                if ( chk ) { target.push('&lt;/table>\n'); chk = false; }
+                if ( pre ) { target.push(   '&lt;pre>\n'); pre = false; }
+                if ( bul ) { target.push(   '&lt;/ul>\n'); bul = false; }
+                if (!num ) { target.push(    '&lt;ol>\n'); num =  true; }
+            } else if(line.match(/^\@/)) {
+                have.add('checklist');
+                if ( pre ) { target.push(  '&lt;/pre>\n'); pre = false; }
+                if ( bul ) { target.push(   '&lt;/ul>\n'); bul = false; }
+                if ( num ) { target.push(   '/&lt;ol>\n'); num = false; }
+                if (!chk ) { target.push(    tbl+'\n'); chk =  true; }
+            } else {
+                if ( chk ) { target.push('&lt;/table>\n'); chk = false; }
+                if ( pre ) { target.push(  '&lt;/pre>\n'); pre = false; }
+                if ( bul ) { target.push(   '&lt;/ul>\n'); bul = false; }
+                if ( num ) { target.push(   '&lt;/ol>\n'); num = false; }
+            }
+            //var trim1 = pre ? rtrim(line.substr(1)) : line.substr(1).trim();
+            var trim1 = line.substr(1); //.trim();
+            if     (!pre ) trim1 = trim1.trim();
+            
+            if     ( pre ) target.push(trim1);
+            else if( num ) target.push(tag('li', trim1));
+            else if( bul ) target.push(tag('li', trim1));
+            else if( chk ) target.push(checkBoxes(line));
+            else          target.push(line.trim());
+        }
+        // Wrap up markdown
+        if (pre) { target.push(  '&lt;/pre>\n'); pre = false; }
+        if (bul) { target.push(   '&lt;/ul>\n'); bul = false; }
+        if (num) { target.push(   '&lt;/ol>\n'); num = false; }
+        if (chk) { target.push('&lt;/table>\n'); chk = false; }
+        if (typeof found != "undefined") {
+            found.push.apply(found, Array.from(have));
+        }
+        return target.join('\n');
+  };
+  
+  //___________________________________________________________________________
+  //TODO Imitate this PHP snippet from Desktop/server/nvie/index.php
+  // except use '&amp;' in place of '@'
+  /*
+@book{CajalHistology,
+  author        = {Santiago Ram\'{o}n y Cajal},
+  title         = {Histology of the Nervous System of Man and Vertebrates},
+  publisher     = {Oxford},
+  pages         = {145},
+  isbn          = {ISBN 0-19-507401-7},
+  year          = {1995},
+  note          = {English translation by Swanson and Swanson, original completed in 1904}
+}
+   */
+
+  /*
+        // reference content
+        $source = preg_replace_callback(
+            '|\n@(\S+)\s*\{(\S+)\s*,\s*(.*)\s*\n\}|msU',
+            array($reference, 'body'),
+            $source);
+
+        // reference pointer
+        $source = preg_replace_callback(
+            '|@(\w+)(\W)|msU',
+            array($reference, 'cite'),
+            $source);
+   */
+  /*
+  function reference(arg) {
+    return
+        '&lt;hr />' +
+        'type '      + arg[1].toString() + '&lt;br />' +
+        'name '      + arg[2].toString() + '&lt;br />' +
+        'body&lt;br />' + arg[3].toString() + '&lt;br />';
+  }
+   */
+
+  //___________________________________________________________________________
+  var Citation = function () {
+    this.citation = {};
+    this.order = [];
+  
+    //_________________________________________________________________________
+    var body = function (arg) {
+      var N = count(this.citation);
+      var type = arg[1];  // Ignored for now
+      var name = arg[2];
+      var body = arg[3];
+  
+      // This retains the order of parts as given.
+      // TODO enforce ordering of specific parts if desired.
+      body = body.replace(/^\s*\w+\s*=\s*\{(.*)\}\,*\s*$\n/gim, ' $1');
+      this.citation[name] = body;
+      return '';
+    };
+  
+    /*
+    //_________________________________________________________________________
+    public function cite($arg) {
+      // This function makes twitter handles difficult.
+      // Use &amp;#64; in place of @.
+      name = arg[1];
+      stop = arg[2];
+      if (array_key_exists($name, $this.citation)) {
+        $key = array_search($name, $this.order);
+        if (!$key) {
+          $key = count($this.order) + 1;
+          $this.order[$key] = $name;
+        }
+        return "&lt;sup>[" + key + "]&lt;/sup>" + stop;
+      }
+      return "[Missing citation " + name + "]" + stop;
+    }
+  
+    //_________________________________________________________________________
+    public function show($arg) {
+      $ret = '';
+      if (count($this.order))
+        $ret .= "&lt;div align=\"center\">&lt;big>$arg&lt;/big>&lt;/div>\n";
+      foreach($this.order as $key=>$name)
+        $ret .= "&lt;br />[$key] " . $this.citation[$name];
+      return $ret;
+    }
+  */
+  };
+  var citation = new Citation();
+
+  var entities = {};
+
+  //___________________________________________________________________________
+  /**
+   * @var {function} markdown - method to perform conversions.
+   * @param {array} source - original pre-markdown text.
+   * @param {string} found - a debugger object to hold progress info.
+   */
+  var markdown = function (source, found) {
+    /*
+        $pattern = '|&lt;!ENTITY\s*(\S*)\s*"([^"]*)">|sU';
+        preg_match_all($pattern, $text, $result, PREG_SET_ORDER);
+     */
+    var target = source;
+    var before = target;
+    if (typeof found == "undefined") {
+        target = target.replace(/\\\n/g, ' ');
+    } else {
+      target = target.replace(/\\\n/g, ' ');
+      if (before != target) found.push('wrap');
+    }
+    /* special case */
+    //target.replace('\n{2,}', '\n&lt;p />\n');
+
+    var combined = [basic_patterns, added_patterns];
+    for (var p in combined) {
+        var patterns = combined[p];
+        for (var key in patterns) {
+            var triple = patterns[key];
+            var name = triple[0], re = triple[1], to = triple[2];
+            if (typeof found == "undefined") {
+                target = target.replace(re, to);
+            } else {
+                before = target;
+                target = target.replace(re, to);
+                if (before != target) found.push(name);
+            }
+        }
+    }
+    target = listpre(target, found);
+    /* @todo
+     * here is where citations should be ingested, referenced, etc...
+     * Use &amp;book{index} as a reference.
+     * Use &amp;book{index field = {content}, field = {content} } as source.
+     * Use &amp;references; late in the markdown to express citations.
+     * Implement specialty entity parsing for &amp;references;
+     * Use abbrevs by creating specialty entities:
+     *   
+     */
+    /* @todo
+     * Implement this entity translation in javascript.
+     *   Example: &lt;!ENTITY jdl  "Jonathan D. Lettvin">
+     *   Then: &amp;jdl; is translated to Jonathan D. Lettvin.
+     * This function should probably precede all others.
+     * original in Desktop/server/nvie/index.php
+
+    private function getentities($text) {
+        $pattern = '|&lt;!ENTITY\s*(\S*)\s*"([^"]*)">|sU';
+        preg_match_all($pattern, $text, $result, PREG_SET_ORDER);
+        return $result;
+    }
+
+    function entify($text) {
+        return
+            preg_replace(
+                '|>|', '&amp;gt',
+                preg_replace(
+                    '|&lt;|', '&amp;lt;',
+                    preg_replace(
+                        '|&amp;|', '&amp;amp;',
+                        $text)));
+    }
+     */
+    return target;
+  };
+
+  // Make markdown function visible.
+  if (typeof module !== 'undefined' &amp;&amp; typeof module.exports !== 'undefined') {
+    module.exports = markdown;
+    //console.log("wiki.js as MAIN");
+  } else {
+    window.wiki = {markdown:markdown, append:append};
+    window.markdown = markdown;
+    window.wikiappend = append;
+    //console.log("wiki.js as MODULE");
+    //export {markdown, append};
+  }
+
+  //MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+  if (typeof module !== 'undefined' &amp;&amp; !module.parent) {
+    var main = function () {
+
+      var FP = ['[FAIL]', '[PASS]']; 
+
+      //_______________________________________________________________________
+      var FAIL_PASS = function (source, expect, basic_patterns) {
+        var found = [];
+        var target = markdown(source, found);
+        var fails = (target != expect);
+        if (fails) {
+          console.log(result + '\tsource: ' + source);
+          console.log('\texpect: ' + expect);
+          console.log('\ttarget: ' + target);
+        } else {
+          if (found == []) found.push('NONE');
+          console.log(FP[+!fails] + ' ' + found.join());
+        }
+        return +fails;
+      };
+  
+      //_______________________________________________________________________
+      var unit1 = function () {
+        console.log('_______ UNIT 1: ' + '_'.repeat(60));
+        var suite = {
+          "section":
+          ["=L1=", '&lt;header align="center">&lt;u>&lt;b id="header1">L1&lt;/b>&lt;/u>&lt;/header>'],
+          "subsection":
+          ["==L2==", '&lt;header align="center">&lt;u>&lt;b id="header2">L2&lt;/b>&lt;/u>&lt;/header>'],
+          "subsubsection":
+          ["===L3===", '&lt;header align="center">&lt;u>&lt;b id="header3">L3&lt;/b>&lt;/u>&lt;/header>'],
+          "indent 3":
+          ["___Indent paragraph.", '&amp;nbsp;&amp;nbsp;&amp;nbsp;Indent paragraph.'],
+          "newline past":
+          ["Break^^^line", 'Break&lt;br clear="all" />line'],
+          "newline":
+          ["Break^^line", 'Break&lt;br />line'],
+          "paragraphs":
+          ["\n\n\n\n", '\n&lt;p />\n'],
+          "preformatted":
+          [" some\n code", '&lt;pre>\nsome\ncode\n&lt;/pre>\n'],
+          "bold":
+          ["!=bold=!", '&lt;b>bold&lt;/b>'],
+          "italic":
+          ["!/italic/!", '&lt;i>italic&lt;/i>'],
+          "underline":
+          ["!_underline_!", '&lt;u>underline&lt;/u>'],
+          "strike":
+          ["!-strike-!", '&lt;strike>strike&lt;/strike>'],
+          "url":
+          ["![http://lettvin.com]!", '&lt;a href="http://lettvin.com">&lt;/a>']
+        };
+        var fails = 0;
+        //for (var test in basic_patterns) fails +=
+            //FAIL_PASS(test[3], test[4], basic_patterns);
+        for(var test in suite) fails +=
+            FAIL_PASS(suite[test][0], suite[test][1], basic_patterns);
+        var result = FP[+(fails === 0)];
+        console.log(result + '\tunit1: ' + fails.toString() + ' FAILS.');
+        return fails;
+      };
+  
+      //_______________________________________________________________________
+      var unit2 = function () {
+        console.log('_______ UNIT 2: ' + '_'.repeat(60));
+        var suite = {
+          "line\\\nwrap": 'line wrap',
+          "@  Check unmarked\n@+ Check accepted\n@- Check rejected":
+'&lt;table style="border:1px solid red;color:black;">\n' +
+'\n' +
+'&lt;tr>&lt;td> &lt;/td>&lt;td style="background-color:white">Check unmarked&lt;/td>&lt;/tr>\n' +
+'&lt;tr>&lt;td>&lt;b style="background-color:white; color:#00AA00;">&amp;#x2714;&lt;/b>&lt;/td>&lt;td style="background-color:white">Check accepted&lt;/td>&lt;/tr>\n' +
+'&lt;tr>&lt;td>&lt;b style="background-color:white; color:red;">&amp;#x2718;&lt;/b>&lt;/td>&lt;td style="background-color:white">Check rejected&lt;/td>&lt;/tr>\n' +
+'&lt;/table>\n',
+          "# hello world": '&lt;ol>\n' +
+            '\n' +
+            '&lt;li>hello world&lt;/li>\n' +
+            '&lt;/ol>\n',
+          "* hello world": '&lt;ul>\n' +
+            '\n' +
+            '&lt;li>hello world&lt;/li>\n' +
+            '&lt;/ul>\n',
+        };
+        var fails = 0;
+        for(var test in suite) fails +=
+            FAIL_PASS(test, suite[test], basic_patterns);
+        var result = FP[+(fails === 0)];
+        console.log(result + '\tunit2: ' + fails.toString() + ' FAILS.');
+        return fails;
+      };
+
+      //_______________________________________________________________________
+      var unit3 = function () {
+        console.log('_______ UNIT 3: ' + '_'.repeat(60));
+        var fails = 0;
+        var suite = HERE(function(){/*
+@book{Svaetichin,
+    title         = {The S-Potential},
+    author        = {Boris D. Drujan et al.},
+    year          = {1982},
+    month         = {January},
+    isbn          = {9780845101131}
+}
+Waxman reference@WaxmanAxons.
+Failed reference@NoReferenceGiven.
+Svaetichin reference@Svaetichin.
+
+@book{CajalHistology,
+  author        = {Santiago Ram\'{o}n y Cajal},
+  title         = {Histology of the Nervous System of Man and Vertebrates},
+  publisher     = {Oxford},
+  pages         = {145},
+  isbn          = {ISBN 0-19-507401-7},
+  year          = {1995},
+  note          = {English translation by Swanson and Swanson, original completed in 1904}
+}
+@article{LettvinSeenMovement,
+    author        = {Jerome Y. Lettvin et. al.},
+    title         = {How seen movement appears in the frog's optic nerve},
+    journal       = {Federation Proceedings},
+    year          = {1959},
+    month         = {march},
+    volume        = {18},
+    number        = {1},
+    pages         = {393 and 354}
+}
+@book{WaxmanAxons,
+    editor        = {Stephen G. Waxman},
+    title         = {Physiology and Pathobiology of Axons},
+    isbn          = {ISBN 0-89004-215-2}
+}
+*/});
+        return fails;
+      };
+  
+      //_______________________________________________________________________
+      var fails = unit1() + unit2() + unit3();
+      var result = FP[+(fails === 0)];
+      console.log(result + '\ttotal: ' + fails.toString() + ' FAILS.');
+    };
+
+    //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    main();
+  }
+
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="haiku.module_js.html">haiku.js</a></li><li><a href="index.module_js.html">index.js</a></li><li><a href="wiki.module_js.html">wiki.js</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sun May 08 2016 01:06:18 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
