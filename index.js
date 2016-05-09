@@ -105,7 +105,7 @@ $(document).ready(function () {
         var SPAN3LEFT     = ' colspan="3" align="left" bgcolor="white"';
         var SPAN3RIGHT    = ' colspan="3" align="right" ';
         var jlettvin      = data.JLettvin;
-        var haiku         = jlettvin.Sin;
+        var haiku         = jlettvin.Nickname;
         var keys          = [];
         var languages     = 0;
 
@@ -130,7 +130,7 @@ $(document).ready(function () {
            */
           var pair        = key.split('|');  // 0:English, 1:dialect
           var dialect     = pair[+!document.haiku.dialect];
-          var source      = document.haiku.JLettvin.Sin[key];
+          var source      = document.haiku.JLettvin.Nickname[key];
           var target      = document.getElementsByClassName('HAIKU_TXT')[0];
 
           // Get existing translation, or declare that a translation is needed.

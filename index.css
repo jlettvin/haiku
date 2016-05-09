@@ -1,7 +1,9 @@
 /* tag controls tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt */
 /* tag names are all lowercase */
 body {
-  background-color:yellow;
+  background-color:rgb(255,255,200);
+  margin-left:auto;
+  margin-right:auto;
 }
 table {
   border:1px solid black;
@@ -9,16 +11,13 @@ table {
 li {
   display:none;
 }
-h5,h6 {
-  margin-top:0;
-  margin-bottom:0;
-}
 
 /* class controls cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc */
 
 /* non-field names are capitalized */
-.Center {
-  text-align:center;
+.flex-container {
+  display:-webkit-flex;
+  display:flex;
 }
 .Obverse {
   color:black;
@@ -58,7 +57,7 @@ h5,h6 {
   text-align:center;
 }
 .HAIKU_BOX {
-  width:300pt;
+  width:370pt;
   background-color:white;
   text-align:center;
   margin-left:auto;
