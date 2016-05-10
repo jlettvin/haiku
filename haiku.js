@@ -148,7 +148,7 @@ document.haiku = {
 */}),  //______________________________________________________________________
             "English|English": HAIKU(function() {/*
  I have a nickname.
- Foolish old man shifts mountain.
+ Foolish old man moves mountain.
  What is your nickname?
 */}),  //______________________________________________________________________
             "Esperanto|Esperanto": HAIKU(function() {/*
