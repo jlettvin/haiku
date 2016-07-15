@@ -161,6 +161,7 @@ document.haiku = {
  Rumal mees nihutab mägi.
  Mis on su hüüdnimi?
 */}),  //______________________________________________________________________
+            // New translation by Michael Palmon at Deltak
             "Filipino|Pilipino": HAIKU(function() {/*
  Mayroon akong palayaw.
  Matandang tangang lalake na tumutulak ng bundok.
