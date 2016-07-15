@@ -162,10 +162,14 @@ document.haiku = {
  Mis on su hüüdnimi?
 */}),  //______________________________________________________________________
             "Filipino|Pilipino": HAIKU(function() {/*
- Mayroon akong isang palayaw.
- Foolish gulang Lalaki shifts bundok.
- Ano ang iyong palayaw?
+ Mayroon akong palayaw.
+ Matandang tangang lalake na tumutulak ng bundok.
+ Ano ang iyong palayaw.
 */}),  //______________________________________________________________________
+ // Old Filibino translation.
+ // Mayroon akong isang palayaw.
+ // Foolish gulang Lalaki shifts bundok.
+ // Ano ang iyong palayaw?
             "Finnish|Suomalainen": HAIKU(function() {/*
  Olen lempinimi.
  Tyhmät vanhus siirtyy vuori.
@@ -173,8 +177,8 @@ document.haiku = {
 */}),  //______________________________________________________________________
             "French|Français": HAIKU(function() {/*
  J'ai un surnom.
- Foolish vieil homme se déplace montagne.
- Quel est ton surnom?
+ Fou vieil homme qui portait une montagne.
+ Quel est votre surnom?
 */}),  //______________________________________________________________________
             "Frisian|Frysk": HAIKU(function() {/*
  Ik haw in bynamme.
@@ -498,8 +502,8 @@ document.haiku = {
 */}),  //______________________________________________________________________
             "Tamil|தமிழ்": HAIKU(function() {/*
  நான் ஒரு புனைப்பெயர் வேண்டும்.
- முட்டாள் பழைய மனிதன் மலை மாற்றங்கள்.
- உனது செல்லப்பெயர் என்ன?
+ ஒரு மலை மேற்கொள்ளப்பட்ட யார் முட்டாள் பழைய மனிதன்.
+ உங்கள் புனைப்பெயர் என்ன?
 */}),  //______________________________________________________________________
             "Telugu|తెలుగు": HAIKU(function() {/*
  నేను మారుపేరు కలిగి.
