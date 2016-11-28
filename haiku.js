@@ -51,9 +51,11 @@ document.haiku = {
  Dwase ou man verskuif berg.
  Wat is jou bynaam?
 */}),  //______________________________________________________________________
+// Unë kam një pseudonim.
+// Budallai i vjetër ndërrime mal.
             "Albanian|Shqiptar": HAIKU(function() {/*
- Unë kam një pseudonim.
- Budallai i vjetër ndërrime mal.
+ Pseudonimi im është.
+ Budallai i moshuar lëviz malet.
  Çfarë është pseudonimi juaj?
 */}),  //______________________________________________________________________
             "Amharic|አማርኛ": HAIKU(function() {/*
