@@ -51,6 +51,7 @@ document.haiku = {
  Dwase ou man verskuif berg.
  Wat is jou bynaam?
 */}),  //______________________________________________________________________
+// Old Albanian (bad) translation.
 // Unë kam një pseudonim.
 // Budallai i vjetër ndërrime mal.
             "Albanian|Shqiptar": HAIKU(function() {/*
