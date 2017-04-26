@@ -491,8 +491,8 @@ document.haiku = {
 */}),  //______________________________________________________________________
             "Swahili|Kiswahili": HAIKU(function() {/*
  Nina jina la utani.
- Foolish mzee mabadiliko ya mlima.
- jina la utani wako ni nini?
+ Mzee mjinga aliyesongesha mlima.
+ Jina lako la utani ni lipi?
 */}),  //______________________________________________________________________
             "Swedish|Svensk": HAIKU(function() {/*
  Nina jina la utani.
