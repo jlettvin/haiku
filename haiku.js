@@ -245,10 +245,14 @@ document.haiku = {
  Yuav ua li cas yog koj lub npe menyuam yaus?
 */}),  //______________________________________________________________________
             "Hungarian|Magyar": HAIKU(function() {/*
- Van egy becenevet.
- Bolond öreg eltolódik hegyen.
- Mi a beceneved?
-*/}),  //______________________________________________________________________
+ A becenevem
+ hegyet bontó vén bolond.
+ Van beceneved?
+*/}),
+ //Van egy becenevet.
+ //Bolond öreg eltolódik hegyen.
+ //Mi a beceneved?
+//*/}),  //______________________________________________________________________
             "Icelandic|Icelandic": HAIKU(function() {/*
  Ég er með gælunafn.
  Heimskur maður gamall vaktir fjall.
